@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	interface Props {
+		type: 'primary' | 'warning' | 'danger' | 'disabled';
+		text: string;
+		action: Function;
+	}
 
-	const dispatch = createEventDispatcher();
-	let buttonType: 'primary' | 'warning' | 'danger' | 'disabled';
-
-	export let text: string;
-	export { buttonType as type };
+	let { type, text, action }: Props = $props();
 </script>
 
-<button on:click={() => dispatch('click')} class={'btn btn-' + buttonType}>{text}</button>
+<button onclick={() => action()} class={'btn btn-' + type}>{text}</button>
 
 <style>
 	.btn {
