@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Sign In | WalletWatch</title>
+	<title>Sign In | Fintraq</title>
 </svelte:head>
 
 <main class="form-wrapper">
