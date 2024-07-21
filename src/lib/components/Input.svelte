@@ -1,8 +1,17 @@
 <script lang="ts">
-	export let name: string;
-	export let type: 'text' | 'password' | 'email';
-	export let placeholder: string;
-	export let required: boolean = true;
+	interface Props {
+		name: string;
+		type: 'text' | 'password' | 'email';
+		placeholder: string;
+		required?: boolean;
+	}
+
+	let {
+		name,
+		type,
+		placeholder,
+		required = true
+	}: Props = $props();
 </script>
 
 <label for={name}>
