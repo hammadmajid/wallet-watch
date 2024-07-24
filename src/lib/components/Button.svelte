@@ -1,17 +1,30 @@
 <script lang="ts">
 	interface Props {
-		type: 'primary' | 'warning' | 'danger' | 'disabled';
+		type: 'button' | 'span';
+		style: 'primary' | 'secondary' | 'warning' | 'danger' | 'disabled';
 		text: string;
-		action: Function;
+		action?: () => void;
 	}
 
-	let { type, text, action }: Props = $props();
+	let { type, style, text, action }: Props = $props();
 </script>
 
-<button onclick={() => action()} class={'btn btn-' + type}>{text}</button>
+{#if type === 'button'}
+	<button
+		onclick={() => {
+			if (action) {
+				action();
+			}
+		}}
+		class={'btn btn-' + style}>{text}</button
+	>
+{:else}
+	<span class={'btn btn-' + style}>{text}</span>
+{/if}
 
 <style>
 	.btn {
+		display: block;
 		padding: 1rem;
 		border-radius: 8px;
 		border: none;
@@ -20,7 +33,6 @@
 		transition: background-color 250ms;
 		color: var(--color-crust);
 	}
-
 	.btn:hover {
 		cursor: pointer;
 	}
@@ -28,7 +40,6 @@
 	.btn-primary {
 		background-color: var(--color-sky);
 	}
-
 	.btn-primary:hover {
 		background-color: var(--color-sapphire);
 	}
@@ -43,7 +54,6 @@
 	.btn-danger {
 		background-color: var(--color-maroon);
 	}
-
 	.btn-danger:hover {
 		background-color: var(--color-red);
 	}
