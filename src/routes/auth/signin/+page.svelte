@@ -14,7 +14,7 @@
 		<Input type="email" name="email" placeholder="Email"></Input>
 		<Input type="password" name="password" placeholder="Password"></Input>
 
-		<Button type="primary" text="Sign in" />
+		<Button type="button" style="primary" text="Sign In" />
 	</form>
 	<p>Don't have an account? <a class="link-signup" href="/auth/signup">Sign Up</a></p>
 </main>

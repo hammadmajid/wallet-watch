@@ -19,7 +19,7 @@
 		<Input type="password" name="name" placeholder="Password"></Input>
 		<Input type="password" name="name" placeholder="Confirm password"></Input>
 
-		<Button type="primary" text="Sign up" />
+		<Button type="button" style="primary" text="Sign up" />
 	</form>
 	<p>Already have an account? <a class="link-signin" href="/auth/signin">Sign In</a></p>
 </main>
