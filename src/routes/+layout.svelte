@@ -1,5 +1,15 @@
 <script lang="ts">
-	let { children} = $props();
+	import type { SupabaseClient, Session } from '@supabase/supabase-js';
+	interface Props {
+		data: {
+			supabaseClient: SupabaseClient;
+			session: Session;
+		};
+		children: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
+	let { supabaseClient, session } = $state(data);
 </script>
 
 
