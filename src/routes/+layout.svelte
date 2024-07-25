@@ -1,5 +1,8 @@
 <script lang="ts">
+	import { invalidate } from '$app/navigation';
 	import type { SupabaseClient, Session } from '@supabase/supabase-js';
+	import { onMount } from 'svelte';
+
 	interface Props {
 		data: {
 			supabaseClient: SupabaseClient;
@@ -10,8 +13,19 @@
 
 	let { data, children }: Props = $props();
 	let { supabaseClient, session } = $state(data);
+
+	onMount(() => {
+		const { data } = supabaseClient.auth.onAuthStateChange((event, newSession) => {
+			if (newSession?.expires_at !== session?.expires_at) {
+				invalidate('supabase:auth');
+			}
+		});
+
+		return () => data.subscription.unsubscribe();
+	});
 </script>
 
+<div>
 
 {@render children()}
 
