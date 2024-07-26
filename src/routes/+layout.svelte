@@ -25,8 +25,6 @@
 	});
 </script>
 
-<div>
-
 {@render children()}
 
 <style>
