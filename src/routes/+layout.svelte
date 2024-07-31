@@ -26,4 +26,6 @@
 	});
 </script>
 
-{@render children()}
+<div class="w-screen min-h-screen bg-zinc-100 text-zinc-800">
+	{@render children()}
+</div>
