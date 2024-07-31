@@ -15,22 +15,5 @@
 </script>
 
 <label for={name}>
-	<input {type} {name} id={name} {placeholder} {required} />
+	<input class="outline-none focus:outline focus:outline-zinc-800 border-none rounded-sm bg-zinc-50 text-zinc-800 placeholder:text-zinc-500 w-full px-4 py-2" {type} {name} id={name} {placeholder} {required} />
 </label>
-
-<style>
-	input {
-		font-size: 1.1rem;
-		outline: none;
-		border: none;
-		border-radius: 8px;
-		width: 100%;
-		padding: 1rem;
-		background-color: var(--color-base);
-		color: var(--color-text);
-	}
-
-	input::placeholder {
-		color: var(--color-subtext1);
-	}
-</style>
