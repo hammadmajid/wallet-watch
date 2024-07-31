@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { Session } from '@supabase/supabase-js';
-	import Button from '$lib/components/Button.svelte';
 
 	interface Props {
 		data: { session: Session | null };
@@ -12,29 +11,16 @@
 	<title>Profile | Fintraq</title>
 </svelte:head>
 
-<section>
-	<h1>Your profile</h1>
+<section class="p-4 w-3/4 mx-auto min-h-screen flex flex-col justify-center items-start space-y-2">
+	<h1 class="text-2xl font-bold">Your profile</h1>
 	<p>
 		You are signed in as <strong>{data.session?.user.email}</strong>
 	</p>
 
 	<form method="POST" action="?/signout">
-		<Button type="button" style="warning" text="Signout" />
+		<button
+			class="px-4 py-2 rounded-sm font-semibold bg-zinc-800 text-zinc-50 hover:bg-zinc-700"
+			type="submit">Sign out</button
+		>
 	</form>
 </section>
-
-<style>
-	section {
-		padding: 1rem;
-		width: 80%;
-		margin: 0 auto;
-	}
-
-	h1 {
-		margin-bottom: 5px;
-	}
-
-	form {
-		margin-top: 2rem;
-	}
-</style>
