@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Session } from '@supabase/supabase-js';
+	import Button from '$lib/components/Button.svelte';
 
 	interface Props {
 		data: { session: Session | null };
@@ -25,9 +26,6 @@
 	</section>
 
 	<form method="POST" action="?/signout">
-		<button
-			class="px-4 py-2 font-semibold rounded-sm bg-zinc-800 text-zinc-50 hover:bg-zinc-700"
-			type="submit">Sign out</button
-		>
+		<Button type="submit">Sign out</Button>
 	</form>
 </section>
