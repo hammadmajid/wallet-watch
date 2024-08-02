@@ -22,7 +22,6 @@
 	<h1 class="text-2xl font-bold">Your profile</h1>
 	<section class="rounded-sm md:w-3/4 bg-slate-200">
 		{@render dataRow('Email', data.session?.user.email!)}
-		{@render dataRow('Email', data.session?.user.email!)}
 	</section>
 
 	<form method="POST" action="?/signout">
