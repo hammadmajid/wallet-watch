@@ -1,0 +1,146 @@
+[
+  {
+    "name": "US Dollar",
+    "code": "USD"
+  },
+  {
+    "name": "Euro",
+    "code": "EUR"
+  },
+  {
+    "name": "Japanese Yen",
+    "code": "JPY"
+  },
+  {
+    "name": "British Pound Sterling",
+    "code": "GBP"
+  },
+  {
+    "name": "Australian Dollar",
+    "code": "AUD"
+  },
+  {
+    "name": "Canadian Dollar",
+    "code": "CAD"
+  },
+  {
+    "name": "Swiss Franc",
+    "code": "CHF"
+  },
+  {
+    "name": "Chinese Yuan",
+    "code": "CNY"
+  },
+  {
+    "name": "Swedish Krona",
+    "code": "SEK"
+  },
+  {
+    "name": "New Zealand Dollar",
+    "code": "NZD"
+  },
+  {
+    "name": "Mexican Peso",
+    "code": "MXN"
+  },
+  {
+    "name": "Singapore Dollar",
+    "code": "SGD"
+  },
+  {
+    "name": "Hong Kong Dollar",
+    "code": "HKD"
+  },
+  {
+    "name": "Norwegian Krone",
+    "code": "NOK"
+  },
+  {
+    "name": "South Korean Won",
+    "code": "KRW"
+  },
+  {
+    "name": "Turkish Lira",
+    "code": "TRY"
+  },
+  {
+    "name": "Indian Rupee",
+    "code": "INR"
+  },
+  {
+    "name": "Brazilian Real",
+    "code": "BRL"
+  },
+  {
+    "name": "South African Rand",
+    "code": "ZAR"
+  },
+  {
+    "name": "Russian Ruble",
+    "code": "RUB"
+  },
+  {
+    "name": "Saudi Riyal",
+    "code": "SAR"
+  },
+  {
+    "name": "United Arab Emirates Dirham",
+    "code": "AED"
+  },
+  {
+    "name": "Chilean Peso",
+    "code": "CLP"
+  },
+  {
+    "name": "Colombian Peso",
+    "code": "COP"
+  },
+  {
+    "name": "Peruvian Nuevo Sol",
+    "code": "PEN"
+  },
+  {
+    "name": "Egyptian Pound",
+    "code": "EGP"
+  },
+  {
+    "name": "Israeli New Shekel",
+    "code": "ILS"
+  },
+  {
+    "name": "Kuwaiti Dinar",
+    "code": "KWD"
+  },
+  {
+    "name": "Qatari Rial",
+    "code": "QAR"
+  },
+  {
+    "name": "Omani Rial",
+    "code": "OMR"
+  },
+  {
+    "name": "Pakistani Rupee",
+    "code": "PKR"
+  },
+  {
+    "name": "Bahraini Dinar",
+    "code": "BHD"
+  },
+  {
+    "name": "Jordanian Dinar",
+    "code": "JOD"
+  },
+  {
+    "name": "Lebanese Pound",
+    "code": "LBP"
+  },
+  {
+    "name": "Syrian Pound",
+    "code": "SYP"
+  },
+  {
+    "name": "Iraqi Dinar",
+    "code": "IQD"
+  }
+]
