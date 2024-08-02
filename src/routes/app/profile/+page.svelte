@@ -11,15 +11,23 @@
 	<title>Profile | Fintraq</title>
 </svelte:head>
 
-<section class="p-4 w-3/4 mx-auto min-h-screen flex flex-col justify-center items-start space-y-2">
-	<h1 class="text-2xl font-bold">Your profile</h1>
-	<p>
-		You are signed in as <strong>{data.session?.user.email}</strong>
+{#snippet dataRow(name: string, value: string)}
+	<p class="flex flex-col justify-between items-start p-4 md:items-center md:flex-row">
+		<span class="font-medium">{name}:</span>
+		<span class="select-all">{value}</span>
 	</p>
+{/snippet}
+
+<section class="flex flex-col justify-center items-start p-4 mx-auto space-y-2 w-3/4 min-h-screen">
+	<h1 class="text-2xl font-bold">Your profile</h1>
+	<section class="rounded-sm md:w-3/4 bg-slate-200">
+		{@render dataRow('Email', data.session?.user.email!)}
+		{@render dataRow('Email', data.session?.user.email!)}
+	</section>
 
 	<form method="POST" action="?/signout">
 		<button
-			class="px-4 py-2 rounded-sm font-semibold bg-zinc-800 text-zinc-50 hover:bg-zinc-700"
+			class="px-4 py-2 font-semibold rounded-sm bg-zinc-800 text-zinc-50 hover:bg-zinc-700"
 			type="submit">Sign out</button
 		>
 	</form>
