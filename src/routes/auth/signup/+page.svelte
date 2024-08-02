@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from '$lib/components/Input.svelte';
+	import Input from '$lib/components/TextInput.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import currencies from '$lib/currencies.json';
 </script>
