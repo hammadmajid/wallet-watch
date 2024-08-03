@@ -20,7 +20,7 @@
 		<p>Enter your information below to login on Fintraq</p>
 	</div>
 	{#if form?.code !== undefined}
-	<div class="px-4 py-2 my-4 bg-red-400 rounded-sm">
+	<div class="py-2 px-4 my-4 bg-red-400 rounded-sm">
 		<h2 class="text-lg font-medium">{form.code}</h2>
 		<p>
 			{form.message}

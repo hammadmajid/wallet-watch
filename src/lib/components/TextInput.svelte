@@ -12,7 +12,7 @@
 <div class="w-full">
 	<label for={name} class="sr-only">{name}</label>
 	<input
-		class="appearance-none outline-none focus:outline focus:outline-zinc-800 transition-all duration-300 border-none rounded-sm bg-zinc-50 text-zinc-800 placeholder:text-zinc-500 w-full px-4 py-2"
+		class="py-2 px-4 w-full rounded-sm border-none transition-all duration-300 appearance-none outline-none focus:outline focus:outline-zinc-800 bg-zinc-50 text-zinc-800 placeholder:text-zinc-500"
 		{type}
 		{name}
 		id={name}
