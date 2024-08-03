@@ -2,17 +2,34 @@
 	import Input from '$lib/components/TextInput.svelte';
 	import Button from '$lib/components/Button.svelte';
 	import currencies from '$lib/currencies.json';
+	import type { FormAction } from './$types';
+
+	interface Props {
+		form: FormAction;
+	}
+
+	let { form }: Props = $props();
 </script>
 
 <svelte:head>
 	<title>Sign up | Fintraq</title>
 </svelte:head>
 
-<main class="flex flex-col gap-6 justify-center items-start p-4 mx-auto w-3/4 min-h-screen">
+<main
+	class="flex flex-col gap-6 justify-center items-start px-4 py-12 mx-auto min-h-screen md:w-3/4"
+>
 	<div>
 		<h1 class="text-2xl font-bold">Create new account</h1>
 		<p>Enter your information below to create new account on Fintraq</p>
 	</div>
+	{#if form?.code !== undefined}
+		<div class="px-4 py-2 my-4 bg-red-400 rounded-sm">
+			<h2 class="text-lg font-medium">{form.code}</h2>
+			<p>
+				{form.message}
+			</p>
+		</div>
+	{/if}
 	<form class="space-y-2 lg:w-1/3" method="POST">
 		<div class="flex flex-col gap-2 md:flex-row">
 			<Input type="text" name="first_name" placeholder="First name" />

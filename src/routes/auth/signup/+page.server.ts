@@ -25,6 +25,7 @@ export const actions: Actions = {
         const password = formData.get('password') as string;
         const currency = formData.get('currency') as string;
 
+
         const { error } = await supabase.auth.signUp({
             email, password, options: {
                 data: {
@@ -36,7 +37,6 @@ export const actions: Actions = {
         });
 
         if (error) {
-            // TODO: handle this error in +page.svelte
             return fail(error.status ?? 500, { code: error.code, message: error.message });
         }
 

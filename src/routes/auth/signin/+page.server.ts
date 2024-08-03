@@ -25,7 +25,6 @@ export const actions: Actions = {
         const { error } = await supabase.auth.signInWithPassword({email, password});
 
         if (error) {
-            // TODO: handle this error in +page.svelte
             return fail(error.status ?? 500, { code: error.code, message: error.message });
         }
 
