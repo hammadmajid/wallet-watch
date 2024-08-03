@@ -1,10 +1,11 @@
 <script lang="ts">
-	import type { Session } from '@supabase/supabase-js';
 	import Button from '$lib/components/Button.svelte';
-
+	import type {UserProfileData} from '$lib';
+	
 	interface Props {
-		data: { session: Session | null };
+		data: UserProfileData;
 	}
+	
 	let { data }: Props = $props();
 </script>
 
@@ -22,9 +23,9 @@
 <section class="flex flex-col justify-center items-start p-4 mx-auto space-y-2 min-h-screen md:w-3/4">
 	<h1 class="text-2xl font-bold">Your profile</h1>
 	<section class="rounded-sm md:w-3/4 bg-slate-200">
-		{@render dataRow('Name', data.session?.user.user_metadata?.first_name + ' ' + data.session?.user.user_metadata?.last_name)}
-		{@render dataRow('Email', data.session?.user.email!)}
-		{@render dataRow('Currency', data.session?.user.user_metadata?.currency)}
+		{@render dataRow('Name', data.name)}
+		{@render dataRow('Email', data.email)}
+		{@render dataRow('Currency', data.currency)}
 	</section>
 
 	<form method="POST" action="?/signout">	
