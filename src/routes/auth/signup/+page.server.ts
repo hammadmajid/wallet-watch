@@ -26,18 +26,18 @@ export const actions: Actions = {
         const currency = formData.get('currency') as string;
 
 
-        const { error } = await supabase.auth.signUp({
-            email, password, options: {
-                data: {
-                    first_name: firstName,
-                    last_name: lastName,
-                    currency
-                }
-            }
-        });
+        const { error } = await supabase.auth.signUp({ email, password });
 
         if (error) {
             return fail(error.status ?? 500, { code: error.code, message: error.message });
+        }
+
+        const respone = await supabase.from('profiles').insert([
+            { full_name: firstName + ' ' + lastName, default_currency: currency },
+        ]);
+
+        if (respone.error) {
+            return fail(500, { code: respone.error.code });
         }
 
         throw redirect(302, "/app/profile");
