@@ -20,9 +20,11 @@
 	</p>
 {/snippet}
 
-<section class="flex flex-col justify-center items-start p-4 mx-auto space-y-2 min-h-screen md:w-3/4">
+<section
+	class="flex flex-col justify-center items-start p-4 mx-auto space-y-2 min-h-screen md:w-3/4"
+>
 	<h1 class="text-2xl font-bold">Your profile</h1>
-	<section class="rounded-sm md:w-3/4 bg-slate-200">
+	<section class="w-full rounded-sm divide-y-2 md:w-3/4 bg-slate-200 divide-slate-300">
 		{@render dataRow('Name', data.name)}
 		{@render dataRow('Email', data.email)}
 		{@render dataRow('Currency', data.currency)}
