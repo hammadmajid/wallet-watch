@@ -24,5 +24,5 @@
 {#if isOutline}
 	{@render constructButton('hover:bg-zinc-200')}
 {:else}
-	{@render constructButton('bg-zinc-800 hover:bg-zinc-600 text-zinc-50')}
+	{@render constructButton('bg-zinc-800 hover:bg-zinc-600 hover:border-zinc-600 text-zinc-50')}
 {/if}
