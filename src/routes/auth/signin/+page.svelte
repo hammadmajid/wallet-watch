@@ -15,7 +15,7 @@
 	<form class="space-y-2 w-1/2" method="POST">
 		<Input type="email" name="email" placeholder="Email" />
 		<Input type="password" name="password" placeholder="Password" />
-		<Button type="submit">Sign in</Button>
+		<Button type="submit">Sign in <i class="ml-2 fa-solid fa-arrow-right-to-bracket"></i></Button>
 	</form>
 	<p>Don't have an account? <a href="/auth/signup" class="font-medium text-blue-600 transition-colors duration-300 hover:text-blue-800">Sign up</a></p>
 </main>

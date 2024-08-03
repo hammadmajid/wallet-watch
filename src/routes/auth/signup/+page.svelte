@@ -30,7 +30,7 @@
 				{/each}
 			</select>
 		</div>
-		<Button type="submit">Sign up</Button>
+		<Button type="submit">Sign up <i class="ml-2 fa-solid fa-arrow-right-to-bracket"></i></Button>
 	</form>
 	<p>
 		Already have an account? <a

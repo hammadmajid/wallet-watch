@@ -28,6 +28,6 @@
 	</section>
 
 	<form method="POST" action="?/signout">	
-		<Button type="submit">Sign out</Button>
+		<Button type="submit">Sign out <i class="ml-2 fa-solid fa-arrow-right-from-bracket"></i></Button>
 	</form>
 </section>
