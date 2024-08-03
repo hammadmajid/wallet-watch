@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Input from '$lib/components/TextInput.svelte';
 	import Button from '$lib/components/Button.svelte';
+	import SelectInput from '$lib/components/SelectInput.svelte';
 	import currencies from '$lib/currencies.json';
 	import type { FormAction } from './$types';
 
@@ -39,14 +40,10 @@
 		<Input type="email" name="email" placeholder="Email" />
 		<Input type="password" name="password" placeholder="Password" />
 
-		<div>
-			<label for="currency"></label>
-			<select id="currency" name="currency" class="block px-4 py-2 appearance-none">
-				{#each currencies as currency}
-					<option value={currency.code}>{currency.name} - {currency.code}</option>
-				{/each}
-			</select>
-		</div>
+		<SelectInput
+			name="currency"
+			options={currencies.map((currency) => `${currency.code} - ${currency.name}`)}
+		></SelectInput>
 		<Button type="submit">Sign up <i class="ml-2 fa-solid fa-arrow-right-to-bracket"></i></Button>
 	</form>
 	<p>
