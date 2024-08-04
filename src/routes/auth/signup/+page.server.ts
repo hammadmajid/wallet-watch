@@ -40,7 +40,7 @@ export const actions: Actions = {
             return fail(500, { code: respone.error.code });
         }
 
-        throw redirect(302, "/app/profile");
+        redirect(302, "/app/profile");
 
     },
 } satisfies Actions;

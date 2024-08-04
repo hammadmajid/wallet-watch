@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession, supabase 
 	const { data, error } = await supabase.from('profiles').select('full_name,default_currency').eq('uuid', session.user.id);
 
 	if (!data || error) {
-		throw redirect(500, "Database error");
+		redirect(500, "Database error");
 	}
 
 	let userData: UserProfileData = {

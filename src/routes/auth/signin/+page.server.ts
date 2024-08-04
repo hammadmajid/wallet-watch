@@ -28,7 +28,7 @@ export const actions: Actions = {
             return fail(error.status ?? 500, { code: error.code, message: error.message });
         }
 
-        throw redirect(302, "/app/profile");
+        redirect(302, "/app/profile");
 
     },
 } satisfies Actions;
