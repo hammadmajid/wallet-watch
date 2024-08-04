@@ -1,14 +1,23 @@
 <script lang="ts">
+	import { onMount } from 'svelte'
+	import Swup from 'swup'
+
+	onMount(() => {
+		const swup = new Swup()
+	})
+
 	interface Props {
-		children: import('svelte').Snippet;
+		children: import('svelte').Snippet
 	}
 
-	let { children }: Props = $props();
+	let { children }: Props = $props()
 </script>
 
 <div class="grid grid-cols-[min-content_1fr]">
 	<nav class="max-w-min">
-		<ul class="flex flex-col gap-2 justify-center items-center p-2 max-w-min min-h-screen rounded-sm bg-slate-200">
+		<ul
+			class="flex flex-col gap-2 justify-center items-center p-2 max-w-min min-h-screen rounded-sm bg-slate-200"
+		>
 			<li class="p-2 max-w-min">
 				<a href="/app/dashboard">
 					<span class="sr-only">Dashboard</span> <i class="w-4 h-4 fa-solid fa-home"></i>
@@ -32,7 +41,18 @@
 		</ul>
 	</nav>
 
-	<div>
+	<div id="swup">
 		{@render children()}
 	</div>
 </div>
+
+<style>
+	/* Define a transition duration during page visits */
+	html.is-changing .transition-fade {
+		transition: opacity 0.25s;
+		opacity: 1;
+	} /* Define the styles for the unloaded pages */
+	html.is-animating .transition-fade {
+		opacity: 0;
+	}
+</style>
