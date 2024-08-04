@@ -36,6 +36,7 @@
 	"dependencies": {
 		"@supabase/ssr": "^0.4.0",
 		"@supabase/supabase-js": "^2.44.4",
+		"@swup/progress-plugin": "^3.2.0",
 		"swup": "^4.7.0"
 	}
 }

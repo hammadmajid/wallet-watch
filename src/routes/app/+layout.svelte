@@ -1,9 +1,20 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 	import Swup from 'swup'
+	import SwupProgressPlugin from '@swup/progress-plugin'
 
 	onMount(() => {
-		const swup = new Swup()
+		const swup = new Swup({
+			plugins: [
+				new SwupProgressPlugin({
+					className: 'swup-progress-bar',
+					transition: 300,
+					delay: 300,
+					initialValue: 0.25,
+					finishAnimation: true
+				})
+			]
+		})
 	})
 
 	interface Props {
@@ -54,5 +65,9 @@
 	} /* Define the styles for the unloaded pages */
 	html.is-animating .transition-fade {
 		opacity: 0;
+	}
+	.swup-progress-bar {
+		height: 4px;
+		background-color: blue;
 	}
 </style>
