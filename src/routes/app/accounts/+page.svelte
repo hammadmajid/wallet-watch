@@ -43,7 +43,7 @@
 		>
 			<p class="grid grid-cols-3 p-4 w-full text-lg font-semibold">
 				<span>Name</span>
-				<span>Balace</span>
+				<span>Balance</span>
 				<span>Type</span>
 			</p>
 			{#each accounts as account}
