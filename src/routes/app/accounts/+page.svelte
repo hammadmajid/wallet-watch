@@ -30,7 +30,7 @@
 	</p>
 {/snippet}
 
-<main class="py-16 px-1 mx-auto space-y-12 w-full min-h-screen md:px-4">
+<main class="px-1 py-16 mx-auto space-y-12 w-full min-h-screen md:px-4">
 	<header class="flex flex-row justify-between items-center mx-auto w-full md:w-3/4">
 		<h1 class="text-2xl font-bold">Accounts</h1>
 		<Button type="button" onClick={modalStateHandler}
@@ -39,7 +39,7 @@
 	</header>
 	{#if accounts}
 		<div
-			class="px-1 py-4 w-full rounded-sm divide-y-2 md:px-8 mx-auto bg-slate-200 md:w-3/4 divide-zinc-300"
+			class="px-1 py-4 mx-auto w-full rounded-sm divide-y-2 md:px-8 bg-slate-200 md:w-3/4 divide-zinc-300"
 		>
 			<p class="grid grid-cols-3 p-4 w-full text-lg font-semibold">
 				<span>Name</span>
@@ -51,7 +51,7 @@
 			{/each}
 		</div>
 	{:else}
-		<div class="w-full px-1 md:px-8 md:w-3/4 text-center mx-auto min-h-max">
+		<div class="px-1 mx-auto w-full text-center md:px-8 md:w-3/4 min-h-max">
 			<p class="text-lg">No account found.</p>
 		</div>
 	{/if}
@@ -60,7 +60,7 @@
 			<TextInput name="name" type="text" placeholder="Account name"></TextInput>
 			<TextInput name="balance" type="text" placeholder="Initial balance"></TextInput>
 			<SelectInput name="type" options={['Checking', 'Saving']}></SelectInput>
-			<div class="space-x-2">
+			<div class="flex space-x-2">
 				<Button type="button" isOutline onClick={modalStateHandler}>Cancel</Button>
 				<Button type="submit"
 					><i class="fa-solid fa-plus"></i><span class="ml-2">Submit</span></Button
