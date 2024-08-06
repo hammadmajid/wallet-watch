@@ -1,7 +1,7 @@
 export interface UserProfileData {
-    name: string;
-    email: string;
-    currency: string;
+	name: string
+	email: string
+	currency: string
 }
 
 export interface AccountData {

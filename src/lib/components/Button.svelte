@@ -1,18 +1,18 @@
 <script lang="ts">
 	interface Props {
-		type: 'submit' | 'button' | 'reset' | undefined;
-		isOutline?: boolean;
-		children: import('svelte').Snippet;
-		onClick?: () => void;
+		type: 'submit' | 'button' | 'reset' | undefined
+		isOutline?: boolean
+		children: import('svelte').Snippet
+		onClick?: () => void
 	}
 
-	const { type, isOutline = false, children, onClick }: Props = $props();
+	const { type, isOutline = false, children, onClick }: Props = $props()
 </script>
 
 {#snippet constructButton(styles: string)}
 	<button
 		onclick={() => {
-			if (onClick) onClick();
+			if (onClick) onClick()
 		}}
 		{type}
 		class={'px-4 py-2 rounded-sm border-2 border-zinc-800 transition-all duration-300 font-semibold' +

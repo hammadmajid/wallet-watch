@@ -1,11 +1,11 @@
 <script lang="ts">
 	interface Props {
-		title: string;
-		isOpen: boolean;
-		children: import('svelte').Snippet;
+		title: string
+		isOpen: boolean
+		children: import('svelte').Snippet
 	}
 
-	let { title, isOpen = false, children }: Props = $props();
+	let { title, isOpen = false, children }: Props = $props()
 </script>
 
 {#if isOpen}

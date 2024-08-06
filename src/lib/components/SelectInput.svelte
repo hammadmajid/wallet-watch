@@ -1,10 +1,10 @@
 <script lang="ts">
 	interface Props {
-		name: string;
-		options: string[];
+		name: string
+		options: string[]
 	}
 
-	let { name, options }: Props = $props();
+	let { name, options }: Props = $props()
 </script>
 
 <select

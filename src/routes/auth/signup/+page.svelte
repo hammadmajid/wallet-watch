@@ -1,15 +1,15 @@
 <script lang="ts">
-	import Input from '$lib/components/TextInput.svelte';
-	import Button from '$lib/components/Button.svelte';
-	import SelectInput from '$lib/components/SelectInput.svelte';
-	import currencies from '$lib/currencies.json';
-	import type { FormAction } from './$types';
+	import Input from '$lib/components/TextInput.svelte'
+	import Button from '$lib/components/Button.svelte'
+	import SelectInput from '$lib/components/SelectInput.svelte'
+	import currencies from '$lib/currencies.json'
+	import type { FormAction } from './$types'
 
 	interface Props {
-		form: FormAction;
+		form: FormAction
 	}
 
-	let { form }: Props = $props();
+	let { form }: Props = $props()
 </script>
 
 <svelte:head>

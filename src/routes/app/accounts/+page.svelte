@@ -30,7 +30,7 @@
 	</p>
 {/snippet}
 
-<main class="w-full space-y-12 px-1 py-16 mx-auto min-h-screen md:px-4">
+<main class="py-16 px-1 mx-auto space-y-12 w-full min-h-screen md:px-4">
 	<header class="flex flex-row justify-between items-center mx-auto w-full md:w-3/4">
 		<h1 class="text-2xl font-bold">Accounts</h1>
 		<Button type="button" onClick={modalStateHandler}

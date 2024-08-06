@@ -19,28 +19,30 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession, supabase 
 	}
 
 	const accounts: AccountList = {
-		accounts: data.map(account => ({
+		accounts: data.map((account) => ({
 			balance: account.balance,
 			name: account.name,
 			type: account.type
 		}))
-	};
+	}
 
 	return accounts
 }
 
 export const actions: Actions = {
 	add: async ({ locals: { supabase }, request }) => {
-		const formData = await request.formData();
-		const name = formData.get("name") as string;
-		const type = formData.get("type") as string;
-		const balance = formData.get("balance") as string;
+		const formData = await request.formData()
+		const name = formData.get('name') as string
+		const type = formData.get('type') as string
+		const balance = formData.get('balance') as string
 
-		const { error } = await supabase.from('accounts').insert([{
-			name,
-			type,
-			balance
-		}])
+		const { error } = await supabase.from('accounts').insert([
+			{
+				name,
+				type,
+				balance
+			}
+		])
 
 		if (error) svelteError(500, 'Internal server error')
 

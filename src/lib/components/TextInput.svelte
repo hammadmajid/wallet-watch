@@ -1,12 +1,12 @@
 <script lang="ts">
 	interface Props {
-		name: string;
-		type: 'text' | 'password' | 'email';
-		placeholder: string;
-		required?: boolean;
+		name: string
+		type: 'text' | 'password' | 'email'
+		placeholder: string
+		required?: boolean
 	}
 
-	let { name, type, placeholder, required = true }: Props = $props();
+	let { name, type, placeholder, required = true }: Props = $props()
 </script>
 
 <div class="w-full">

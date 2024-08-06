@@ -2,33 +2,32 @@ import { fail, redirect } from '@sveltejs/kit'
 import type { Actions, PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ url, locals: { safeGetSession } }) => {
-    const { session } = await safeGetSession();
+	const { session } = await safeGetSession()
 
-    if (session) {
-        redirect(303, '/app/profile');
-    }
+	if (session) {
+		redirect(303, '/app/profile')
+	}
 
-    return { url: url.origin };
+	return { url: url.origin }
 }
 
 export const actions: Actions = {
-    default: async (event) => {
-        const {
-            request,
-            locals: { supabase },
-        } = event;
+	default: async (event) => {
+		const {
+			request,
+			locals: { supabase }
+		} = event
 
-        const formData = await request.formData();
-        const email = formData.get('email') as string;
-        const password = formData.get('password') as string;
-        
-        const { error } = await supabase.auth.signInWithPassword({email, password});
+		const formData = await request.formData()
+		const email = formData.get('email') as string
+		const password = formData.get('password') as string
 
-        if (error) {
-            return fail(error.status ?? 500, { code: error.code, message: error.message });
-        }
+		const { error } = await supabase.auth.signInWithPassword({ email, password })
 
-        redirect(302, "/app/profile");
+		if (error) {
+			return fail(error.status ?? 500, { code: error.code, message: error.message })
+		}
 
-    },
-} satisfies Actions;
+		redirect(302, '/app/profile')
+	}
+} satisfies Actions

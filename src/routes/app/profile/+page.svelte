@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte';
-	import type {UserProfileData} from '$lib';
-	
+	import Button from '$lib/components/Button.svelte'
+	import type { UserProfileData } from '$lib'
+
 	interface Props {
-		data: UserProfileData;
+		data: UserProfileData
 	}
-	
-	let { data }: Props = $props();
+
+	let { data }: Props = $props()
 </script>
 
 <svelte:head>
@@ -30,7 +30,8 @@
 		{@render dataRow('Currency', data.currency)}
 	</section>
 
-	<form method="POST" action="?/signout">	
-		<Button type="submit">Sign out <i class="ml-2 fa-solid fa-arrow-right-from-bracket"></i></Button>
+	<form method="POST" action="?/signout">
+		<Button type="submit">Sign out <i class="ml-2 fa-solid fa-arrow-right-from-bracket"></i></Button
+		>
 	</form>
 </section>
