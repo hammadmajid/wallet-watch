@@ -3,3 +3,13 @@ export interface UserProfileData {
     email: string;
     currency: string;
 }
+
+export interface AccountData {
+	name: string
+	type: string
+	balance: number
+}
+
+export interface AccountList {
+	accounts: AccountData[]
+}
