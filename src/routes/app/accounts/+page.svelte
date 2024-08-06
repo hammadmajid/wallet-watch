@@ -12,7 +12,6 @@
 	const { data }: Props = $props()
 
 	let accounts = $state(data.accounts)
-	// let accounts = null
 	let modalState = $state(false)
 	const modalStateHandler = () => {
 		modalState = !modalState
@@ -57,7 +56,7 @@
 		</div>
 	{/if}
 	<Modal title="Add account" isOpen={modalState}>
-		<form action="?/add" class="space-y-3">
+		<form action="?/add" method="POST" class="space-y-3">
 			<TextInput name="name" type="text" placeholder="Account name"></TextInput>
 			<TextInput name="balance" type="text" placeholder="Initial balance"></TextInput>
 			<SelectInput name="type" options={['Checking', 'Saving']}></SelectInput>
