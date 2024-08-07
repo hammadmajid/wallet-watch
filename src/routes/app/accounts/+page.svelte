@@ -1,15 +1,16 @@
 <script lang="ts">
-	import Button from '$lib/components/Button.svelte'
-	import Modal from '$lib/components/Modal.svelte'
-	import TextInput from '$lib/components/TextInput.svelte'
-	import SelectInput from '$lib/components/SelectInput.svelte'
+	import AddAccountModal from './AddAccountModal.svelte'
+	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton'
 
 	export let data
 
 	let accounts = data.accounts
-	let modalState = false
-	const modalStateHandler = () => {
-		modalState = !modalState
+
+	let modalStore = getModalStore()
+	const addAccountModal: ModalComponent = { ref: AddAccountModal }
+	const modal: ModalSettings = {
+		type: 'component',
+		component: addAccountModal
 	}
 </script>
 
@@ -17,46 +18,41 @@
 	<title>Accounts | Fintraq</title>
 </svelte:head>
 
-<main class="px-1 py-16 mx-auto space-y-12 w-full min-h-screen md:px-4">
-	<header class="flex flex-row justify-between items-center mx-auto w-full md:w-3/4">
-		<h1 class="text-2xl font-bold">Accounts</h1>
-		<Button type="button" on:click={modalStateHandler}
-			><i class="fa-solid fa-plus"></i><span class="ml-2">Add account</span></Button
+<main class="flex flex-col justify-start items-start p-4 mx-auto space-y-6 min-h-screen md:w-3/4">
+	<header class="flex flex-row justify-between w-full">
+		<h1 class="h1">Accounts</h1>
+		<button
+			class="btn variant-filled sm:btn-sm md:btn-lg"
+			type="button"
+			on:click={() => modalStore.trigger(modal)}
+			><i class="fa-solid fa-plus"></i><span class="ml-2">Add account</span></button
 		>
 	</header>
 	{#if accounts}
-		<div
-			class="px-1 py-4 mx-auto w-full rounded-sm divide-y-2 md:px-8 bg-slate-200 md:w-3/4 divide-zinc-300"
-		>
-			<p class="grid grid-cols-3 p-4 w-full text-lg font-semibold">
-				<span>Name</span>
-				<span>Balance</span>
-				<span>Type</span>
-			</p>
-			{#each accounts as account}
-				<p class="grid grid-cols-3 p-4 w-full">
-					<span>{account.name}</span>
-					<span>{account.balance}</span>
-					<span>{account.type}</span>
-				</p>
-			{/each}
+		<div class="table-container">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Balance</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each accounts as account}
+						<tr>
+							<td>{account.name}</td>
+							<td>{account.balance}</td>
+							<td>{account.type}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
 		</div>
 	{:else}
 		<div class="px-1 mx-auto w-full text-center md:px-8 md:w-3/4 min-h-max">
 			<p class="text-lg">No account found.</p>
 		</div>
 	{/if}
-	<Modal title="Add account" isOpen={modalState}>
-		<form action="?/add" method="POST" class="space-y-3">
-			<TextInput name="name" type="text" placeholder="Account name"></TextInput>
-			<TextInput name="balance" type="text" placeholder="Initial balance"></TextInput>
-			<SelectInput name="type" options={['Checking', 'Saving']}></SelectInput>
-			<div class="flex space-x-2">
-				<Button type="button" isOutline on:click={modalStateHandler}>Cancel</Button>
-				<Button type="submit"
-					><i class="fa-solid fa-plus"></i><span class="ml-2">Submit</span></Button
-				>
-			</div>
-		</form>
-	</Modal>
+
 </main>
