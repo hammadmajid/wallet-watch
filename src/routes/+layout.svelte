@@ -2,6 +2,9 @@
 	import '$lib/app.css'
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
+	import { initializeStores } from '@skeletonlabs/skeleton'
+
+	initializeStores()
 
 	export let data
 
