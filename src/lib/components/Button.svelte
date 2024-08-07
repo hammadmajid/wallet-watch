@@ -1,28 +1,20 @@
 <script lang="ts">
-	interface Props {
-		type: 'submit' | 'button' | 'reset' | undefined
-		isOutline?: boolean
-		children: import('svelte').Snippet
-		onClick?: () => void
-	}
-
-	const { type, isOutline = false, children, onClick }: Props = $props()
+	export let type: 'submit' | 'button' | 'reset' | undefined
+	export let isOutline: boolean = false
 </script>
 
-{#snippet constructButton(styles: string)}
-	<button
-		onclick={() => {
-			if (onClick) onClick()
-		}}
-		{type}
-		class={'px-4 py-2 rounded-sm border-2 border-zinc-800 transition-all duration-300 font-semibold' +
-			' ' +
-			styles}>{@render children()}</button
-	>
-{/snippet}
-
 {#if isOutline}
-	{@render constructButton('hover:bg-zinc-200')}
+	<button
+		{type}
+		class="px-4 py-2 font-semibold rounded-sm border-2 transition-all duration-300 hover:bg-zinc-200 border-zinc-800"
+	>
+		<slot />
+	</button>
 {:else}
-	{@render constructButton('bg-zinc-800 hover:bg-zinc-600 hover:border-zinc-600 text-zinc-50')}
+	<button
+		{type}
+		class="px-4 py-2 font-semibold rounded-sm border-2 transition-all duration-300 bg-zinc-800 hover:bg-zinc-600 hover:border-zinc-600 text-zinc-50 border-zinc-800"
+	>
+		<slot />
+	</button>
 {/if}

@@ -16,12 +16,6 @@
 			]
 		})
 	})
-
-	interface Props {
-		children: import('svelte').Snippet
-	}
-
-	let { children }: Props = $props()
 </script>
 
 <div class="grid grid-cols-[min-content_1fr]">
@@ -53,7 +47,7 @@
 	</nav>
 
 	<div id="swup">
-		{@render children()}
+		<slot />
 	</div>
 </div>
 

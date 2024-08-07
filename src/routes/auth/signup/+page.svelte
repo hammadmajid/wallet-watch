@@ -3,13 +3,9 @@
 	import Button from '$lib/components/Button.svelte'
 	import SelectInput from '$lib/components/SelectInput.svelte'
 	import currencies from '$lib/currencies.json'
-	import type { FormAction } from './$types'
+	import type { ActionData } from './$types'
 
-	interface Props {
-		form: FormAction
-	}
-
-	let { form }: Props = $props()
+	export let form: ActionData
 </script>
 
 <svelte:head>
@@ -24,7 +20,7 @@
 		<p>Enter your information below to create new account on Fintraq</p>
 	</div>
 	{#if form?.code !== undefined}
-		<div class="py-2 px-4 my-4 bg-red-400 rounded-sm">
+		<div class="px-4 py-2 my-4 bg-red-400 rounded-sm">
 			<h2 class="text-lg font-medium">{form.code}</h2>
 			<p>
 				{form.message}
