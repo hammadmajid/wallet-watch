@@ -1,7 +1,19 @@
 <script lang="ts">
 	import type { ActionData } from './$types'
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton'
 
 	export let form: ActionData
+
+	let toastStore = getToastStore()
+	const errorToast: ToastSettings = {
+		message: form?.code + '' + form?.message ?? '500: Internal server error',
+		background: 'variant-filled-error',
+		autohide: false
+	}
+
+	if (form?.code) {
+		toastStore.trigger(errorToast)
+	}
 </script>
 
 <svelte:head>
@@ -15,14 +27,6 @@
 		<h1 class="h1">Welcome back!</h1>
 		<p>Enter your information below to login on Fintraq</p>
 	</div>
-	{#if form?.code !== undefined}
-		<div class="px-4 py-2 my-4 bg-red-400 rounded-sm">
-			<h2 class="text-lg font-medium">{form.code}</h2>
-			<p>
-				{form.message}
-			</p>
-		</div>
-	{/if}
 	<form class="space-y-2 w-full md:w-1/2" method="POST">
 		<label for="email" class="label">
 			<input

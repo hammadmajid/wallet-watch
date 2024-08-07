@@ -1,8 +1,20 @@
 <script lang="ts">
 	import currencies from '$lib/currencies.json'
 	import type { ActionData } from './$types'
+	import { getToastStore, type ToastSettings } from '@skeletonlabs/skeleton'
 
 	export let form: ActionData
+
+	let toastStore = getToastStore()
+	const errorToast: ToastSettings = {
+		message: form?.code + '' + form?.message ?? '500: Internal server error',
+		background: 'variant-filled-error',
+		autohide: false
+	}
+
+	if (form?.code) {
+		toastStore.trigger(errorToast)
+	}
 </script>
 
 <svelte:head>
@@ -16,14 +28,6 @@
 		<h1 class="h1">Create new account</h1>
 		<p>Enter your information below to create new account on Fintraq</p>
 	</div>
-	{#if form?.code !== undefined}
-		<div class="px-4 py-2 my-4 bg-red-400 rounded-sm">
-			<h2 class="text-lg font-medium">{form.code}</h2>
-			<p>
-				{form.message}
-			</p>
-		</div>
-	{/if}
 	<form class="space-y-2 lg:w-1/3" method="POST">
 		<div class="flex flex-col gap-2 md:flex-row">
 			<label class="label">
@@ -32,7 +36,8 @@
 					type="text"
 					name="first_name"
 					id="first_name"
-					placeholder="First name" required
+					placeholder="First name"
+					required
 				/>
 			</label>
 			<label class="label">
@@ -41,16 +46,31 @@
 					type="text"
 					name="first_name"
 					id="first_name"
-					placeholder="Last name" required
+					placeholder="Last name"
+					required
 				/>
 			</label>
 		</div>
 
 		<label for="email" class="label">
-			<input class="input" type="email" name="email" id="email" placeholder="Email address" required />
+			<input
+				class="input"
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Email address"
+				required
+			/>
 		</label>
 		<label class="label">
-			<input class="input" placeholder="Password" type="password" name="password" id="password" required />
+			<input
+				class="input"
+				placeholder="Password"
+				type="password"
+				name="password"
+				id="password"
+				required
+			/>
 		</label>
 
 		<select name="currency" class="select" required>

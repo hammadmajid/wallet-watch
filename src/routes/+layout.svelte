@@ -2,7 +2,7 @@
 	import '$lib/app.css'
 	import { invalidate } from '$app/navigation'
 	import { onMount } from 'svelte'
-	import { initializeStores, Modal } from '@skeletonlabs/skeleton'
+	import { initializeStores, Modal, Toast } from '@skeletonlabs/skeleton'
 
 	initializeStores()
 
@@ -22,6 +22,7 @@
 </script>
 
 <Modal />
+<Toast />
 <div class="w-screen min-h-screen">
 	<slot />
 </div>
