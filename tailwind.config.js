@@ -1,6 +1,7 @@
 // @ts-check
 import { join } from 'path'
 import { skeleton } from '@skeletonlabs/tw-plugin'
+import forms from '@tailwindcss/forms'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -16,6 +17,7 @@ export default {
 	plugins: [
 		skeleton({
 			themes: { preset: ['hamlindigo'] }
-		})
+		}),
+		forms
 	]
 }
