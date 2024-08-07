@@ -5,6 +5,11 @@
 	export let data
 
 	let accounts = data.accounts
+	let totalBalance = 0
+
+	accounts.map((account) => {
+		totalBalance += account.balance
+	})
 
 	let modalStore = getModalStore()
 	const addAccountModal: ModalComponent = { ref: AddAccountModal }
@@ -47,6 +52,12 @@
 						</tr>
 					{/each}
 				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="2">Calculated Balance:</th>
+						<td>{totalBalance.toFixed(2)}</td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 	{:else}
