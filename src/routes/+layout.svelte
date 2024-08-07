@@ -18,6 +18,6 @@
 	})
 </script>
 
-<div class="w-screen min-h-screen bg-zinc-100 text-zinc-800">
+<div class="w-screen min-h-screen">
 	<slot />
 </div>
