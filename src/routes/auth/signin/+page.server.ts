@@ -25,7 +25,7 @@ export const actions: Actions = {
 		const { error } = await supabase.auth.signInWithPassword({ email, password })
 
 		if (error) {
-			return fail(error.status ?? 500, { code: error.code, message: error.message })
+			return fail(500, { code: 'Error:', message: 'Invalid credentials' })
 		}
 
 		redirect(302, '/app/profile')

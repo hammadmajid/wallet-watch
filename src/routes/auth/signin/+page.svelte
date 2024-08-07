@@ -6,7 +6,7 @@
 
 	let toastStore = getToastStore()
 	const errorToast: ToastSettings = {
-		message: form?.code + '' + form?.message ?? '500: Internal server error',
+		message: form?.code + ' ' + form?.message ?? '500: Internal server error',
 		background: 'variant-filled-error',
 		autohide: false
 	}
