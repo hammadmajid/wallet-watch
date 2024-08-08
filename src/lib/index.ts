@@ -5,6 +5,7 @@ export interface UserProfileData {
 }
 
 export interface AccountData {
+	id: string
 	name: string
 	type: string
 	balance: number

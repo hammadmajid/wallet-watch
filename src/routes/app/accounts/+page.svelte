@@ -1,5 +1,5 @@
 <script lang="ts">
-	import AddAccountModal from './AddAccountModal.svelte'
+	import AccountEditorModal from './AccountEditorModal.svelte'
 	import { getModalStore, type ModalComponent, type ModalSettings } from '@skeletonlabs/skeleton'
 
 	export let data
@@ -12,10 +12,23 @@
 	})
 
 	let modalStore = getModalStore()
-	const addAccountModal: ModalComponent = { ref: AddAccountModal }
+	const addAccountModal: ModalComponent = { ref: AccountEditorModal }
 	const modal: ModalSettings = {
 		type: 'component',
 		component: addAccountModal
+	}
+
+	function triggerEditModal(id: string, name: string, type: string, balance: number) {
+		const makeEditModal: ModalComponent = {
+			ref: AccountEditorModal,
+			props: { id, name, type, balance, operation: "Update" }
+		}
+		const editModal: ModalSettings = {
+			type: 'component',
+			component: makeEditModal
+		}
+
+		modalStore.trigger(editModal)
 	}
 </script>
 
@@ -41,14 +54,22 @@
 						<th>Name</th>
 						<th>Balance</th>
 						<th>Type</th>
+						<th>Edit</th>
 					</tr>
 				</thead>
 				<tbody>
-					{#each accounts as account}
+					{#each accounts as { id, name, balance, type }}
 						<tr>
-							<td>{account.name}</td>
-							<td>{account.balance}</td>
-							<td>{account.type}</td>
+							<td>{name}</td>
+							<td>{balance}</td>
+							<td>{type}</td>
+							<td
+								><button
+									class="btn variant-outline"
+									on:click={() => triggerEditModal(id, name, type, balance)}
+									><i class="fa-solid fa-pen"></i></button
+								></td
+							>
 						</tr>
 					{/each}
 				</tbody>
@@ -65,5 +86,4 @@
 			<p class="text-lg">No account found.</p>
 		</div>
 	{/if}
-
 </main>

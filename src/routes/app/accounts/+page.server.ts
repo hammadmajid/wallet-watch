@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession, supabase 
 
 	const { data, error } = await supabase
 		.from('accounts')
-		.select('name,type,balance')
+		.select('id,name,type,balance')
 		.eq('user', session.user.id)
 
 	if (!data || error) {
@@ -20,6 +20,7 @@ export const load: PageServerLoad = async ({ locals: { safeGetSession, supabase 
 
 	const accounts: AccountList = {
 		accounts: data.map((account) => ({
+			id: account.id,
 			balance: account.balance,
 			name: account.name,
 			type: account.type
@@ -47,5 +48,27 @@ export const actions: Actions = {
 		if (error) svelteError(500, 'Internal server error')
 
 		return { success: true }
+	},
+	update: async ({ locals: { supabase }, request }) => {
+		const formData = await request.formData()
+		const id = formData.get('id') as string
+		const name = formData.get('name') as string
+		const type = formData.get('type') as string
+		
+		const { error } = await supabase.from('accounts').update({ name, type }).eq('id', id)
+
+		if (error) svelteError(500, 'Internal server error')
+
+		return { success: true }
+	},
+	delete: async ({ locals: { supabase }, request }) => {
+		const formData = await request.formData()
+		const id = formData.get('id') as string
+
+		const { error } = await supabase.from('accounts').delete().eq('id', id)
+
+		if (error) svelteError(500, 'Internal server error')
+
+		return { success: true }
 	}
-}
+} satisfies Actions
