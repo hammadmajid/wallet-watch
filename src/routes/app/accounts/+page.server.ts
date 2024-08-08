@@ -37,15 +37,35 @@ export const actions: Actions = {
 		const type = formData.get('type') as string
 		const balance = formData.get('balance') as string
 
-		const { error } = await supabase.from('accounts').insert([
-			{
-				name,
-				type,
-				balance
-			}
-		])
+		const { data, error } = await supabase
+			.from('accounts')
+			.insert([
+				{
+					name,
+					type,
+					balance
+				}
+			])
+			.select()
 
-		if (error) svelteError(500, 'Internal server error')
+		if (error) {
+			svelteError(500, 'Internal server error')
+		}
+
+		if (balance !== '0') {
+			const res = await supabase.from('records').insert([
+				{
+					account: data[0].id,
+					amount: balance,
+					type: 'Income',
+					category: 'Initial balance'
+				}
+			])
+
+			if (res.error) {
+				svelteError(500, 'Internal server error')
+			}
+		}
 
 		return { success: true }
 	},
@@ -54,7 +74,7 @@ export const actions: Actions = {
 		const id = formData.get('id') as string
 		const name = formData.get('name') as string
 		const type = formData.get('type') as string
-		
+
 		const { error } = await supabase.from('accounts').update({ name, type }).eq('id', id)
 
 		if (error) svelteError(500, 'Internal server error')
