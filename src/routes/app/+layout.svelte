@@ -4,7 +4,8 @@
 
 	const drawerStore = getDrawerStore()
 	const drawerSettings: DrawerSettings = {
-		width: 'max-w-max'
+		width: 'max-w-max',
+		position: 'right'
 	}
 </script>
 
