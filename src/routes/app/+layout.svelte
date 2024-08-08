@@ -1,53 +1,15 @@
 <script lang="ts">
-	import { page } from '$app/stores'
-	import {
-		AppBar,
-		AppRail,
-		AppRailAnchor,
-		Drawer,
-		getDrawerStore,
-		type DrawerSettings
-	} from '@skeletonlabs/skeleton'
+	import { AppBar, Drawer, getDrawerStore, type DrawerSettings } from '@skeletonlabs/skeleton'
+	import SideBar from '$lib/components/SideBar.svelte'
 
 	const drawerStore = getDrawerStore()
 	const drawerSettings: DrawerSettings = {
 		width: 'max-w-max'
 	}
-
-	const tiles = [
-		{
-			name: 'Dashboard',
-			icon: 'home'
-		},
-		{
-			name: 'Records',
-			icon: 'list'
-		},
-		{
-			name: 'Accounts',
-			icon: 'bank'
-		},
-		{
-			name: 'Profile',
-			icon: 'user'
-		}
-	]
 </script>
 
 <Drawer>
-	<AppRail>
-		{#each tiles as { name, icon }}
-			<AppRailAnchor
-				href="/app/{name.toLowerCase()}"
-				target="_self"
-				title={name}
-				selected={$page.url.pathname === `/app/${name.toLowerCase()}`}
-			>
-				<svelte:fragment slot="lead"><i class="fa-solid fa-{icon}"></i></svelte:fragment>
-				<span>{name}</span>
-			</AppRailAnchor>
-		{/each}
-	</AppRail>
+	<SideBar />
 </Drawer>
 
 <AppBar shadow="drop-shadow-xl" label="header">
@@ -65,19 +27,7 @@
 
 <div class="grid md:grid-cols-[max-content_1fr]">
 	<div class="hidden md:block">
-		<AppRail>
-			{#each tiles as { name, icon }}
-				<AppRailAnchor
-					href="/app/{name.toLowerCase()}"
-					target="_self"
-					title={name}
-					selected={$page.url.pathname === `/app/${name.toLowerCase()}`}
-				>
-					<svelte:fragment slot="lead"><i class="fa-solid fa-{icon}"></i></svelte:fragment>
-					<span>{name}</span>
-				</AppRailAnchor>
-			{/each}
-		</AppRail>
+		<SideBar />
 	</div>
 
 	<div class="w-full">
