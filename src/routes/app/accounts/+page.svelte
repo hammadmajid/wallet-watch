@@ -36,11 +36,11 @@
 	<title>Accounts | Fintraq</title>
 </svelte:head>
 
-<main class="flex flex-col justify-start items-start p-4 mx-auto space-y-6 min-h-screen md:w-3/4">
+<main class="flex flex-col justify-start items-center p-4 mx-auto space-y-6 w-full min-h-screen md:w-3/4">
 	<header class="flex flex-row justify-between w-full">
 		<h1 class="h1">Accounts</h1>
 		<button
-			class="btn variant-filled sm:btn-sm md:btn-lg"
+			class="btn variant-filled btn-sm md:btn-lg"
 			type="button"
 			on:click={() => modalStore.trigger(modal)}
 			><i class="fa-solid fa-plus"></i><span class="ml-2">Add account</span></button
@@ -53,7 +53,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Balance</th>
-						<th>Type</th>
+						<th class="hidden md:block">Type</th>
 						<th>Edit</th>
 					</tr>
 				</thead>
@@ -62,7 +62,7 @@
 						<tr>
 							<td>{name}</td>
 							<td>{balance}</td>
-							<td>{type}</td>
+							<td class="hidden md:block">{type}</td>
 							<td
 								><button
 									class="btn variant-outline"

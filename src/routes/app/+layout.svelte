@@ -63,7 +63,7 @@
 	</svelte:fragment>
 </AppBar>
 
-<div class="grid grid-cols-[max-content_1fr]" id="swup">
+<div class="grid md:grid-cols-[max-content_1fr]">
 	<div class="hidden md:block">
 		<AppRail>
 			{#each tiles as { name, icon }}
@@ -80,7 +80,7 @@
 		</AppRail>
 	</div>
 
-	<div>
+	<div class="w-full">
 		<slot />
 	</div>
 </div>
