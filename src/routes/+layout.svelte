@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '$lib/app.css'
 	import { invalidate } from '$app/navigation'
+	import { page } from '$app/stores'
 	import { onMount } from 'svelte'
 	import { initializeStores, Modal, Toast, AppBar } from '@skeletonlabs/skeleton'
 
@@ -24,14 +25,16 @@
 <Modal />
 <Toast />
 <div class="w-screen min-h-screen">
-	<AppBar shadow="drop-shadow-xl" label="header">
-		<svelte:fragment slot="lead"><p class="h3"><a href="/">Fintraq</a></p></svelte:fragment>
-		<svelte:fragment slot="trail"
-			><a href="https://github.com/hammadmajid/fintraq"
-				><i class="w-6 h-6 fa-brands fa-github"></i></a
-			></svelte:fragment
-		>
-	</AppBar>
+	{#if $page.url.pathname === '/' || $page.url.pathname === '/auth/signin' || $page.url.pathname == '/auth/signup'}
+		<AppBar shadow="drop-shadow-xl" label="header">
+			<svelte:fragment slot="lead"><p class="h3"><a href="/">Fintraq</a></p></svelte:fragment>
+			<svelte:fragment slot="trail"
+				><a href="https://github.com/hammadmajid/fintraq"
+					><i class="w-6 h-6 fa-brands fa-github"></i></a
+				></svelte:fragment
+			>
+		</AppBar>
+	{/if}
 
 	<slot />
 </div>
