@@ -1,47 +1,84 @@
 <script lang="ts">
 	import { page } from '$app/stores'
-	import { AppRail, AppRailAnchor } from '@skeletonlabs/skeleton'
+	import {
+		AppBar,
+		AppRail,
+		AppRailAnchor,
+		Drawer,
+		getDrawerStore,
+		type DrawerSettings
+	} from '@skeletonlabs/skeleton'
+
+	const drawerStore = getDrawerStore()
+	const drawerSettings: DrawerSettings = {
+		width: 'max-w-max'
+	}
+
+	const tiles = [
+		{
+			name: 'Dashboard',
+			icon: 'home'
+		},
+		{
+			name: 'Records',
+			icon: 'list'
+		},
+		{
+			name: 'Accounts',
+			icon: 'bank'
+		},
+		{
+			name: 'Profile',
+			icon: 'user'
+		}
+	]
 </script>
 
-<div class="grid grid-cols-[max-content_1fr]" id="swup">
+<Drawer>
 	<AppRail>
-		<AppRailAnchor
-			href="/app/dashboard"
-			target="_self"
-			title="Dashboard"
-			selected={$page.url.pathname === '/app/dashboard'}
-		>
-			<svelte:fragment slot="lead"><i class="fa-solid fa-home"></i></svelte:fragment>
-			<span>Dashboard</span>
-		</AppRailAnchor>
-		<AppRailAnchor
-			href="/app/records"
-			target="_self"
-			title="Records"
-			selected={$page.url.pathname === '/app/records'}
-		>
-			<svelte:fragment slot="lead"><i class="fa-solid fa-list"></i></svelte:fragment>
-			<span>Records</span>
-		</AppRailAnchor>
-		<AppRailAnchor
-			href="/app/accounts"
-			target="_self"
-			title="Accounts"
-			selected={$page.url.pathname === '/app/accounts'}
-		>
-			<svelte:fragment slot="lead"><i class="fa-solid fa-bank"></i></svelte:fragment>
-			<span>Accounts</span>
-		</AppRailAnchor>
-		<AppRailAnchor
-			href="/app/profile"
-			target="_self"
-			title="Profile"
-			selected={$page.url.pathname === '/app/profile'}
-		>
-			<svelte:fragment slot="lead"><i class="fa-solid fa-user"></i></svelte:fragment>
-			<span>Profile</span>
-		</AppRailAnchor>
+		{#each tiles as { name, icon }}
+			<AppRailAnchor
+				href="/app/{name.toLowerCase()}"
+				target="_self"
+				title={name}
+				selected={$page.url.pathname === `/app/${name.toLowerCase()}`}
+			>
+				<svelte:fragment slot="lead"><i class="fa-solid fa-{icon}"></i></svelte:fragment>
+				<span>{name}</span>
+			</AppRailAnchor>
+		{/each}
 	</AppRail>
+</Drawer>
+
+<AppBar shadow="drop-shadow-xl" label="header">
+	<svelte:fragment slot="lead">
+		<p class="h3">
+			<a href="/">Fintraq </a>
+		</p>
+	</svelte:fragment>
+	<svelte:fragment slot="trail">
+		<button class="btn md:hidden" on:click={() => drawerStore.open(drawerSettings)}
+			><i class="w-5 h-5 fa-solid fa-bars"></i></button
+		>
+	</svelte:fragment>
+</AppBar>
+
+<div class="grid grid-cols-[max-content_1fr]" id="swup">
+	<div class="hidden md:block">
+		<AppRail>
+			{#each tiles as { name, icon }}
+				<AppRailAnchor
+					href="/app/{name.toLowerCase()}"
+					target="_self"
+					title={name}
+					selected={$page.url.pathname === `/app/${name.toLowerCase()}`}
+				>
+					<svelte:fragment slot="lead"><i class="fa-solid fa-{icon}"></i></svelte:fragment>
+					<span>{name}</span>
+				</AppRailAnchor>
+			{/each}
+		</AppRail>
+	</div>
 
 	<div>
 		<slot />
